@@ -45,17 +45,12 @@ public class SignInActivity extends AppCompatActivity {
                             if(checkUser == true){
                                 Toast.makeText(SignInActivity.this, "sign in successfully", Toast.LENGTH_SHORT).show();
 
-                                // pass data between activities
+                                // session id
+                                // pass data (user email) between activities
                                 String value = et_email.getText().toString();
-                                Intent i = new Intent(SignInActivity.this, ManageFoodWasteActivity.class);
+                                Intent i = new Intent(SignInActivity.this, HomepageActivity.class);
                                 i.putExtra("key",value);
                                 startActivity(i);
-
-                                // original intent
-                                /*
-                                Intent intent = new Intent(SignInActivity.this, ManageFoodWasteActivity.class);
-                                startActivity(intent);
-                                 */
                             }else
                                 Toast.makeText(SignInActivity.this, "invalid sign in credentials", Toast.LENGTH_SHORT).show();
                         }catch(Exception e){

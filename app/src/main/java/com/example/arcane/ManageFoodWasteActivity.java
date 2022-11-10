@@ -44,10 +44,14 @@ public class ManageFoodWasteActivity extends AppCompatActivity {
                     if(foodCategory.equals("") || foodName.equals("") || foodDescription.equals(""))
                         Toast.makeText(ManageFoodWasteActivity.this, "please fill all the information", Toast.LENGTH_SHORT).show();
                     else{
-                        Bundle extras = getIntent().getExtras();
-                        if (extras != null) {
-                            key_value = extras.getString("key");
-                            //The key argument here must match that used in the other activity
+                        // session id
+                        {
+                            // receive data from another activity
+                            Bundle extras = getIntent().getExtras();
+                            if (extras != null) {
+                                key_value = extras.getString("key");
+                                //The key argument here must match that used in the other activity
+                            }
                         }
                         db.addFood(foodCategory,foodName,foodDescription, key_value);
 
