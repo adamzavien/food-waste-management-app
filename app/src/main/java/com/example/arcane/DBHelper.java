@@ -24,7 +24,6 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String FOOD_CATEGORY       = "FOOD_CATEGORY";
     private static final String FOOD_NAME           = "FOOD_NAME";
     private static final String FOOD_DESCRIPTION    = "FOOD_DESCRIPTION";
-    private static final String USERNAME2           = "USER_NAME2";
     private static final String FK_USER_EMAIL       = "USER_EMAIL";
     // foreign key : USER_EMAIL ( from user table)
 
@@ -114,4 +113,36 @@ public class DBHelper extends SQLiteOpenHelper {
 
         db.insert(FOOD_TABLE, null, cv);
     }
+
+    // view food list
+    // might put user email as parameter
+    public String viewFoodList(){
+        db = this.getReadableDatabase();
+
+        String[] columns = new String[]{FOOD_ID, FOOD_CATEGORY, FOOD_NAME, FOOD_DESCRIPTION, USER_EMAIL};
+
+        Cursor cursor = db.query(FOOD_TABLE, columns, null, null, null, null, null);
+
+        int indexfoodID, indexfoodCategory, indexfoodName, indexfoodDescription, indexUserEmail;
+
+        indexfoodID = cursor.getColumnIndex(FOOD_ID);
+        indexfoodCategory = cursor.getColumnIndex(FOOD_CATEGORY);
+        indexfoodName = cursor.getColumnIndex(FOOD_NAME);
+        indexfoodDescription = cursor.getColumnIndex(FOOD_DESCRIPTION);
+        indexUserEmail = cursor.getColumnIndex(USER_EMAIL);
+
+        String result = "";
+
+        for(cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()){
+            result +=
+                    "Food ID\t: " + cursor.getString(indexfoodID) + "\n" +
+                            "Food Category\t\t\t: " + cursor.getString(indexfoodCategory) + "\n" +
+                            "Food Name\t\t\t: " + cursor.getString(indexfoodName) + "\n" +
+                            "Food Description\t\t\t: " + cursor.getString(indexfoodDescription) + "\n" +
+                            "User Email\t\t\t: " + cursor.getString(indexUserEmail) + "\n\n";
+        }
+            db.close();
+            return result;
+    }
+
 }
