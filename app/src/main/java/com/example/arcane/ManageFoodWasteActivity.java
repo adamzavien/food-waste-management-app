@@ -13,7 +13,7 @@ public class ManageFoodWasteActivity extends AppCompatActivity {
 
     EditText et_foodCategory, et_foodName, et_FoodDescription;
     Button btn_composeFoodWaste;
-    String foodCategory, foodName, foodDescription;
+    String foodCategory, foodName, foodDescription, key_value;
     DBHelper db;
 
     @Override
@@ -44,7 +44,12 @@ public class ManageFoodWasteActivity extends AppCompatActivity {
                     if(foodCategory.equals("") || foodName.equals("") || foodDescription.equals(""))
                         Toast.makeText(ManageFoodWasteActivity.this, "please fill all the information", Toast.LENGTH_SHORT).show();
                     else{
-                        db.addFood(foodCategory,foodName,foodDescription);
+                        Bundle extras = getIntent().getExtras();
+                        if (extras != null) {
+                            key_value = extras.getString("key");
+                            //The key argument here must match that used in the other activity
+                        }
+                        db.addFood(foodCategory,foodName,foodDescription, key_value);
 
                         Intent intent = new Intent(ManageFoodWasteActivity.this, ViewFoodActivity.class);
                         startActivity(intent);

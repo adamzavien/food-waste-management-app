@@ -5,9 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
-
-import androidx.annotation.Nullable;
 
 public class DBHelper extends SQLiteOpenHelper {
 
@@ -28,7 +25,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String FOOD_NAME           = "FOOD_NAME";
     private static final String FOOD_DESCRIPTION    = "FOOD_DESCRIPTION";
     private static final String USERNAME2           = "USER_NAME2";
-    //private static final String FK_USERNAME         = "USER_NAME";
+    private static final String FK_USER_EMAIL       = "USER_EMAIL";
     // foreign key : USER_EMAIL ( from user table)
 
     Context context;
@@ -47,27 +44,30 @@ public class DBHelper extends SQLiteOpenHelper {
 
         db.execSQL(createUserTable);
 
+        /*
         String createFoodTable = "CREATE TABLE " + FOOD_TABLE + "(\n" +
                 FOOD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, \n" +
                 FOOD_CATEGORY + "  TEXT, \n" +
                 FOOD_NAME + "  TEXT, \n" +
-                FOOD_DESCRIPTION + "  TEXT);";
+                FOOD_DESCRIPTION + "  TEXT, \n" +
+                USERNAME2 + "  TEXT);";
 
         db.execSQL(createFoodTable);
+        */
+
 
         // food table with foreign key
-        {/*
+
         String createTable3 = "CREATE TABLE " + FOOD_TABLE + "(\n" +
                 FOOD_ID + "  INTEGER PRIMARY KEY AUTOINCREMENT, \n" +
                 FOOD_CATEGORY + "  TEXT, \n" +
                 FOOD_NAME + "  TEXT, \n" +
                 FOOD_DESCRIPTION + "  TEXT, \n" +
-                FK_USERNAME + "  TEXT, \n" +
-                "  FOREIGN KEY(USER_NAME) REFERENCES USER(USER_NAME)\n" +
+                FK_USER_EMAIL + "  TEXT, \n" +
+                "  FOREIGN KEY(USER_EMAIL) REFERENCES USER(USER_EMAIL)\n" +
                 ");";
 
         db.execSQL(createTable3);
-        */}
     }
 
     @Override
@@ -102,7 +102,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     // add new food information into the food table
-    public void addFood(String foodCategory, String foodName, String foodDescription){
+    public void addFood(String foodCategory, String foodName, String foodDescription, String userEmail){
         db = this.getWritableDatabase();
 
         ContentValues cv = new ContentValues();
@@ -110,6 +110,7 @@ public class DBHelper extends SQLiteOpenHelper {
         cv.put(FOOD_CATEGORY,foodCategory);
         cv.put(FOOD_NAME, foodName);
         cv.put(FOOD_DESCRIPTION, foodDescription);
+        cv.put(FK_USER_EMAIL, userEmail);
 
         db.insert(FOOD_TABLE, null, cv);
     }
