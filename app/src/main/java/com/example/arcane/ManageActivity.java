@@ -83,8 +83,28 @@ public class ManageActivity extends AppCompatActivity {
                 }catch(Exception e){
                     Toast.makeText(ManageActivity.this, "error to update food info", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
 
+        btn_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                foodID = edit_foodID.getText().toString();
+                try{
+                    if(foodID.equals(""))
+                        Toast.makeText(ManageActivity.this, "please fill the id", Toast.LENGTH_SHORT).show();
+                    else{
+                        long l = Long.parseLong(foodID);
 
+                        edit_foodCategory.setText(db.getFoodCategory(l));
+                        edit_foodName.setText(db.getFoodName(l));
+                        edit_foodDescription.setText(db.getFoodDescription(l));
+
+                        Toast.makeText(ManageActivity.this, "food info found", Toast.LENGTH_SHORT).show();
+                    }
+                }catch(Exception e){
+                    Toast.makeText(ManageActivity.this, "error found during food information search", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

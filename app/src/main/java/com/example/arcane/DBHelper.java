@@ -168,4 +168,53 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    // search for specific food based on three get functions
+    public String getFoodCategory(long l1){
+        db = this.getReadableDatabase();
+
+        String[] columns = new String[] {FOOD_ID, FOOD_CATEGORY, FOOD_NAME, FOOD_DESCRIPTION};
+
+        Cursor cursor = db.query(FOOD_TABLE, columns, FOOD_ID + " = " + l1, null, null, null, null);
+
+        if(cursor != null){
+            cursor.moveToFirst();
+            String foodCategory = cursor.getString(1);
+            return foodCategory;
+        }
+        Toast.makeText(context, "food category not found", Toast.LENGTH_SHORT).show();
+        return null;
+    }
+
+    public String getFoodName(long l1){
+        db = this.getReadableDatabase();
+
+        String[] columns = new String[] {FOOD_ID, FOOD_CATEGORY, FOOD_NAME, FOOD_DESCRIPTION};
+
+        Cursor cursor = db.query(FOOD_TABLE, columns, FOOD_ID + " = " + l1, null, null, null, null);
+
+        if(cursor != null){
+            cursor.moveToFirst();
+            String foodCategory = cursor.getString(2);
+            return foodCategory;
+        }
+        Toast.makeText(context, "food name not found", Toast.LENGTH_SHORT).show();
+        return null;
+    }
+
+    public String getFoodDescription(long l1){
+        db = this.getReadableDatabase();
+
+        String[] columns = new String[] {FOOD_ID, FOOD_CATEGORY, FOOD_NAME, FOOD_DESCRIPTION};
+
+        Cursor cursor = db.query(FOOD_TABLE, columns, FOOD_ID + " = " + l1, null, null, null, null);
+
+        if(cursor != null){
+            cursor.moveToFirst();
+            String foodCategory = cursor.getString(3);
+            return foodCategory;
+        }
+        Toast.makeText(context, "food description not found", Toast.LENGTH_SHORT).show();
+        return null;
+    }
+
 }

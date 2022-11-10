@@ -11,7 +11,12 @@ import android.widget.TextView;
 public class ViewFoodActivity extends AppCompatActivity {
 
     TextView viewFoodActivity;
-    Button btn_goDelete, btn_goUpdate;
+    Button btn_goDelete, btn_goUpdate, btn_goSearch;
+
+    public void intent(){
+        Intent intent = new Intent(ViewFoodActivity.this, ManageActivity.class);
+        startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +27,7 @@ public class ViewFoodActivity extends AppCompatActivity {
         viewFoodActivity = findViewById(R.id.viewFoodActivity);
         btn_goDelete = findViewById(R.id.btn_goDelete);
         btn_goUpdate = findViewById(R.id.btn_goUpdate);
+        btn_goSearch = findViewById(R.id.btn_goSearch);
 
         DBHelper db = new DBHelper(this);
 
@@ -31,18 +37,22 @@ public class ViewFoodActivity extends AppCompatActivity {
         btn_goDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ViewFoodActivity.this, ManageActivity.class);
-                startActivity(intent);
+                intent();
             }
         });
 
         btn_goUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ViewFoodActivity.this, ManageActivity.class);
-                startActivity(intent);
+                intent();
             }
         });
 
+        btn_goSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent();
+            }
+        });
     }
 }
