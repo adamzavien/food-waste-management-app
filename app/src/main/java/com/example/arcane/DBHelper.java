@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -26,7 +27,8 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String FOOD_CATEGORY       = "FOOD_CATEGORY";
     private static final String FOOD_NAME           = "FOOD_NAME";
     private static final String FOOD_DESCRIPTION    = "FOOD_DESCRIPTION";
-    private static final String FK_USERNAME         = "USER_NAME";
+    private static final String USERNAME2           = "USER_NAME2";
+    //private static final String FK_USERNAME         = "USER_NAME";
     // foreign key : USER_EMAIL ( from user table)
 
     Context context;
@@ -45,6 +47,16 @@ public class DBHelper extends SQLiteOpenHelper {
 
         db.execSQL(createUserTable);
 
+        String createFoodTable = "CREATE TABLE " + FOOD_TABLE + "(\n" +
+                FOOD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, \n" +
+                FOOD_CATEGORY + "  TEXT, \n" +
+                FOOD_NAME + "  TEXT, \n" +
+                FOOD_DESCRIPTION + "  TEXT);";
+
+        db.execSQL(createFoodTable);
+
+        // food table with foreign key
+        {/*
         String createTable3 = "CREATE TABLE " + FOOD_TABLE + "(\n" +
                 FOOD_ID + "  INTEGER PRIMARY KEY AUTOINCREMENT, \n" +
                 FOOD_CATEGORY + "  TEXT, \n" +
@@ -55,7 +67,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 ");";
 
         db.execSQL(createTable3);
-
+        */}
     }
 
     @Override
@@ -87,5 +99,18 @@ public class DBHelper extends SQLiteOpenHelper {
             return true;
         else
             return false;
+    }
+
+    // add new food information into the food table
+    public void addFood(String foodCategory, String foodName, String foodDescription){
+        db = this.getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+
+        cv.put(FOOD_CATEGORY,foodCategory);
+        cv.put(FOOD_NAME, foodName);
+        cv.put(FOOD_DESCRIPTION, foodDescription);
+
+        db.insert(FOOD_TABLE, null, cv);
     }
 }

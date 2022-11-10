@@ -45,7 +45,7 @@ public class SignInActivity extends AppCompatActivity {
                             if(checkUser == true){
                                 Toast.makeText(SignInActivity.this, "sign in successfully", Toast.LENGTH_SHORT).show();
 
-                                Intent intent = new Intent(SignInActivity.this, HomepageActivity.class);
+                                Intent intent = new Intent(SignInActivity.this, ManageFoodWasteActivity.class);
                                 startActivity(intent);
                             }else
                                 Toast.makeText(SignInActivity.this, "invalid sign in credentials", Toast.LENGTH_SHORT).show();
