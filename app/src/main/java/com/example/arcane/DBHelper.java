@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 public class DBHelper extends SQLiteOpenHelper {
 
@@ -136,13 +137,35 @@ public class DBHelper extends SQLiteOpenHelper {
         for(cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()){
             result +=
                     "Food ID\t: " + cursor.getString(indexfoodID) + "\n" +
-                            "Food Category\t\t\t: " + cursor.getString(indexfoodCategory) + "\n" +
-                            "Food Name\t\t\t: " + cursor.getString(indexfoodName) + "\n" +
-                            "Food Description\t\t\t: " + cursor.getString(indexfoodDescription) + "\n" +
-                            "User Email\t\t\t: " + cursor.getString(indexUserEmail) + "\n\n";
+                            "Food Category \t: " + cursor.getString(indexfoodCategory) + "\n" +
+                            "Food Name : \t" + cursor.getString(indexfoodName) + "\n" +
+                            "Food Description \t: " + cursor.getString(indexfoodDescription) + "\n" +
+                            "User Email \t: " + cursor.getString(indexUserEmail) + "\n\n";
         }
             db.close();
             return result;
+    }
+
+    // delete food information based on food id
+    public void deleteFood(long l){
+
+        db = this.getWritableDatabase();
+
+        db.delete(FOOD_TABLE, FOOD_ID + " = " + l, null);
+    }
+
+    // update food information
+    // can't edit user email via this function
+    public void updateFood(long l, String foodCategory, String foodName, String foodDescription){
+        db = this.getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+        cv.put(FOOD_CATEGORY,foodCategory);
+        cv.put(FOOD_NAME, foodName);
+        cv.put(FOOD_DESCRIPTION, foodDescription);
+
+        db.update(FOOD_TABLE, cv, FOOD_ID + " = " + l, null);
+        db.close();
     }
 
 }
