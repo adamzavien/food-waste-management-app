@@ -11,17 +11,17 @@ import android.widget.Toast;
 
 public class SignInActivity extends AppCompatActivity {
 
-    EditText et_email, et_password;
+    EditText et_username, et_password;
     Button btn_signIn;
     DBHelper db;
-    String email, password;
+    String username, password;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
         setTitle("Sign In");
 
-        et_email = findViewById(R.id.et_logEmail);
+        et_username = findViewById(R.id.et_logUsername);
         et_password = findViewById(R.id.et_logPassword);
         btn_signIn = findViewById(R.id.btn_logIn);
 
@@ -31,23 +31,23 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // convert input to string
-                email       = et_email.getText().toString();
-                password    = et_password.getText().toString();
+                username = et_username.getText().toString();
+                password = et_password.getText().toString();
 
                 try{
                     // to ensure all the fields are not blank
-                    if(email.equals("") || password.equals(""))
+                    if(username.equals("") || password.equals(""))
                         Toast.makeText(SignInActivity.this, "please fill all the information", Toast.LENGTH_SHORT).show();
                     else{
                         try{
-                            Boolean checkUser = db.checkBoth(email, password);
+                            Boolean checkUser = db.checkBoth(username, password);
 
                             if(checkUser == true){
                                 Toast.makeText(SignInActivity.this, "sign in successfully", Toast.LENGTH_SHORT).show();
 
                                 // session id
-                                // pass data (user email) between activities
-                                String value = et_email.getText().toString();
+                                // pass data (username) between activities
+                                String value = et_username.getText().toString();
                                 Intent i = new Intent(SignInActivity.this, HomepageActivity.class);
                                 i.putExtra("key",value);
                                 startActivity(i);

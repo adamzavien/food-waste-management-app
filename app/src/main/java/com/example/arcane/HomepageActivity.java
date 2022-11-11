@@ -27,26 +27,24 @@ public class HomepageActivity extends AppCompatActivity {
 
         db = new DBHelper(this);
 
+        //session id
+        // receive data from another activity
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            key_value = extras.getString("key");
+            //The key argument here must match that used in the other activity
+        }
+        // pass data between activities
+        String value = key_value;
+        Intent i = new Intent(HomepageActivity.this, ManageFoodWasteActivity.class);
+        i.putExtra("key",value);
+
+        txt_greetUser.setText("Hello, " + key_value);
+
         btn_manageFoodWaste.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomepageActivity.this, ManageFoodWasteActivity.class);
-                startActivity(intent);
-
-                // session id
-                {
-                    // receive data from another activity
-                    Bundle extras = getIntent().getExtras();
-                    if (extras != null) {
-                        key_value = extras.getString("key");
-                        //The key argument here must match that used in the other activity
-                    }
-                    // pass data between activities
-                    String value = key_value;
-                    Intent i = new Intent(HomepageActivity.this, ManageFoodWasteActivity.class);
-                    i.putExtra("key",value);
-                    startActivity(i);
-                }
+                startActivity(i);
             }
         });
 

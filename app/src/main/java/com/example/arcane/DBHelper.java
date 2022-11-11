@@ -25,8 +25,8 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String FOOD_CATEGORY       = "FOOD_CATEGORY";
     private static final String FOOD_NAME           = "FOOD_NAME";
     private static final String FOOD_DESCRIPTION    = "FOOD_DESCRIPTION";
-    private static final String FK_USER_EMAIL       = "USER_EMAIL";
-    // foreign key : USER_EMAIL ( from user table)
+    private static final String FK_USER_NAME        = "USER_NAME";
+    // foreign key : USERNAME ( from user table)
 
     Context context;
 
@@ -44,27 +44,15 @@ public class DBHelper extends SQLiteOpenHelper {
 
         db.execSQL(createUserTable);
 
-        /*
-        String createFoodTable = "CREATE TABLE " + FOOD_TABLE + "(\n" +
-                FOOD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, \n" +
-                FOOD_CATEGORY + "  TEXT, \n" +
-                FOOD_NAME + "  TEXT, \n" +
-                FOOD_DESCRIPTION + "  TEXT, \n" +
-                USERNAME2 + "  TEXT);";
-
-        db.execSQL(createFoodTable);
-        */
-
 
         // food table with foreign key
-
         String createTable3 = "CREATE TABLE " + FOOD_TABLE + "(\n" +
                 FOOD_ID + "  INTEGER PRIMARY KEY AUTOINCREMENT, \n" +
                 FOOD_CATEGORY + "  TEXT, \n" +
                 FOOD_NAME + "  TEXT, \n" +
                 FOOD_DESCRIPTION + "  TEXT, \n" +
-                FK_USER_EMAIL + "  TEXT, \n" +
-                "  FOREIGN KEY(USER_EMAIL) REFERENCES USER(USER_EMAIL)\n" +
+                FK_USER_NAME + "  TEXT, \n" +
+                "  FOREIGN KEY(USER_NAME) REFERENCES USER(USER_NAME)\n" +
                 ");";
 
         db.execSQL(createTable3);
@@ -90,10 +78,10 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     // check user credential such as user email & password
-    public Boolean checkBoth(String email, String password){
+    public Boolean checkBoth(String username, String password){
         db = this.getWritableDatabase();
 
-        Cursor cursor = db.rawQuery("select * from USER where USER_EMAIL = ? and USER_PASSWORD = ?", new String[] {email,password});
+        Cursor cursor = db.rawQuery("select * from USER where USER_NAME = ? and USER_PASSWORD = ?", new String[] {username,password});
 
         if(cursor.getCount() > 0)
             return true;
@@ -102,7 +90,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     // add new food information into the food table
-    public void addFood(String foodCategory, String foodName, String foodDescription, String userEmail){
+    public void addFood(String foodCategory, String foodName, String foodDescription, String userName){
         db = this.getWritableDatabase();
 
         ContentValues cv = new ContentValues();
@@ -110,7 +98,7 @@ public class DBHelper extends SQLiteOpenHelper {
         cv.put(FOOD_CATEGORY,foodCategory);
         cv.put(FOOD_NAME, foodName);
         cv.put(FOOD_DESCRIPTION, foodDescription);
-        cv.put(FK_USER_EMAIL, userEmail);
+        cv.put(FK_USER_NAME, userName);
 
         db.insert(FOOD_TABLE, null, cv);
     }
@@ -120,17 +108,17 @@ public class DBHelper extends SQLiteOpenHelper {
     public String viewFoodList(){
         db = this.getReadableDatabase();
 
-        String[] columns = new String[]{FOOD_ID, FOOD_CATEGORY, FOOD_NAME, FOOD_DESCRIPTION, USER_EMAIL};
+        String[] columns = new String[]{FOOD_ID, FOOD_CATEGORY, FOOD_NAME, FOOD_DESCRIPTION, FK_USER_NAME};
 
         Cursor cursor = db.query(FOOD_TABLE, columns, null, null, null, null, null);
 
-        int indexfoodID, indexfoodCategory, indexfoodName, indexfoodDescription, indexUserEmail;
+        int indexfoodID, indexfoodCategory, indexfoodName, indexfoodDescription, indexUserName;
 
         indexfoodID = cursor.getColumnIndex(FOOD_ID);
         indexfoodCategory = cursor.getColumnIndex(FOOD_CATEGORY);
         indexfoodName = cursor.getColumnIndex(FOOD_NAME);
         indexfoodDescription = cursor.getColumnIndex(FOOD_DESCRIPTION);
-        indexUserEmail = cursor.getColumnIndex(USER_EMAIL);
+        indexUserName = cursor.getColumnIndex(FK_USER_NAME);
 
         String result = "";
 
@@ -140,7 +128,7 @@ public class DBHelper extends SQLiteOpenHelper {
                             "Food Category \t: " + cursor.getString(indexfoodCategory) + "\n" +
                             "Food Name : \t" + cursor.getString(indexfoodName) + "\n" +
                             "Food Description \t: " + cursor.getString(indexfoodDescription) + "\n" +
-                            "User Email \t: " + cursor.getString(indexUserEmail) + "\n\n";
+                            "User Name \t: " + cursor.getString(indexUserName) + "\n\n";
         }
             db.close();
             return result;
@@ -155,7 +143,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     // update food information
-    // can't edit user email via this function
+    // can't edit username via this function
     public void updateFood(long l, String foodCategory, String foodName, String foodDescription){
         db = this.getWritableDatabase();
 
@@ -216,5 +204,4 @@ public class DBHelper extends SQLiteOpenHelper {
         Toast.makeText(context, "food description not found", Toast.LENGTH_SHORT).show();
         return null;
     }
-
 }
