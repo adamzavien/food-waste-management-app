@@ -28,14 +28,14 @@ public class HomepageActivity extends AppCompatActivity {
         db = new DBHelper(this);
 
         //session id
-        // receive data from another activity
+        // receive data from another activity : login activity
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             key_value = extras.getString("key");
             //The key argument here must match that used in the other activity
         }
         // pass data between activities
-        String value = key_value;
+        String value = key_value; // this key value represent username
         Intent i = new Intent(HomepageActivity.this, ManageFoodWasteActivity.class);
         i.putExtra("key",value);
 

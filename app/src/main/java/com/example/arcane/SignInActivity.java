@@ -37,13 +37,13 @@ public class SignInActivity extends AppCompatActivity {
                 try{
                     // to ensure all the fields are not blank
                     if(username.equals("") || password.equals(""))
-                        Toast.makeText(SignInActivity.this, "please fill all the information", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SignInActivity.this, "Please fill in all the information", Toast.LENGTH_SHORT).show();
                     else{
                         try{
                             Boolean checkUser = db.checkBoth(username, password);
 
                             if(checkUser == true){
-                                Toast.makeText(SignInActivity.this, "sign in successfully", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SignInActivity.this, "Sign In Successfully", Toast.LENGTH_SHORT).show();
 
                                 // session id
                                 // pass data (username) between activities
@@ -52,7 +52,7 @@ public class SignInActivity extends AppCompatActivity {
                                 i.putExtra("key",value);
                                 startActivity(i);
                             }else
-                                Toast.makeText(SignInActivity.this, "invalid sign in credentials", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SignInActivity.this, "Invalid Sign In Credentials", Toast.LENGTH_SHORT).show();
                         }catch(Exception e){
                             Toast.makeText(SignInActivity.this, "error section 003", Toast.LENGTH_SHORT).show();
                         }

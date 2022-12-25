@@ -1,3 +1,22 @@
 <resources>
-    <string name="app_name">Arcane</string>
+        <string name="app_name">Arcane</string>
+        <string name="Pit_Compose">
+                1. Choose a place to dig. \n\n
+                2. Dig a hole 12 inches / 30 cm deep. \n\n
+                3. Dump in your food waste into the hole.\n\n
+                4. Cover the hole with at least 6 inches / 15 cm of soil. \n\n
+                5. Turn the compost once in a while. \n\n
+                6. Done ! \n\n
+        </string>
+        <string name="Vermi_Compose">
+                1. Provide an organic waste materials such as vermiworm. \n\n
+                2. Prepare a vermi compost bed measuring one meter wide and five meters in length. \n\n
+                3. Add the organic waste materials into the compost bed.\n\n
+                4. Water the compost bed to make it more mosturized. \n\n
+                5. Add one kilogram of earthworm into the bed. \n\n
+                6. Put a sacks as a cover on top of the compost bed for a conducive environments for the earthworm. \n\n
+                7. After a few months, sieve the harvested vermicast to separate the earthworms with undecomposed materials. \n\n
+                8. Done !\n\n
+        </string>
+
 </resources>

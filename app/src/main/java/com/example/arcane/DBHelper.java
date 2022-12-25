@@ -104,7 +104,6 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     // view food list
-    // might put user email as parameter
     public String viewFoodList(){
         db = this.getReadableDatabase();
 
@@ -182,8 +181,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
         if(cursor != null){
             cursor.moveToFirst();
-            String foodCategory = cursor.getString(2);
-            return foodCategory;
+            String foodName = cursor.getString(2);
+            return foodName;
         }
         Toast.makeText(context, "food name not found", Toast.LENGTH_SHORT).show();
         return null;
@@ -198,8 +197,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
         if(cursor != null){
             cursor.moveToFirst();
-            String foodCategory = cursor.getString(3);
-            return foodCategory;
+            String foodDescription = cursor.getString(3);
+            return foodDescription;
         }
         Toast.makeText(context, "food description not found", Toast.LENGTH_SHORT).show();
         return null;

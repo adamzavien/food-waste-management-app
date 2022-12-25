@@ -35,6 +35,8 @@ public class ViewFoodActivity extends AppCompatActivity {
         String data = db.viewFoodList();
         viewFoodActivity.setText(data);
 
+        // all the button below will go to the next activity
+
         btn_goDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,7 +53,9 @@ public class ViewFoodActivity extends AppCompatActivity {
 
         btn_goSearch.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {intent();}
+            public void onClick(View v) {
+                intent();
+            }
         });
     }
 }

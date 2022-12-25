@@ -55,13 +55,29 @@ public class ManageFoodWasteActivity extends AppCompatActivity {
                         }
                         db.addFood(foodCategory,foodName,foodDescription, key_value);
 
-                        Intent intent = new Intent(ManageFoodWasteActivity.this, ViewFoodActivity.class);
-                        startActivity(intent);
+                        //Intent intent = new Intent(ManageFoodWasteActivity.this, CompostPit.class);
+                        //startActivity(intent);
+
+                        compostTech(foodCategory);
                     }
                 }catch(Exception e){
                     Toast.makeText(ManageFoodWasteActivity.this, "error found during food information insertion", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+    }
+
+    // compostTech
+
+    public void compostTech(String category){
+        if(category.toLowerCase().equals("fruit")){
+            Intent aaa = new Intent(ManageFoodWasteActivity.this, CompostPit.class);
+            startActivity(aaa);
+        }else if(category.toLowerCase().equals("grains")){
+            Intent aaa = new Intent(ManageFoodWasteActivity.this, CompostVermi.class);
+            startActivity(aaa);
+        }else{
+            Toast.makeText(this, "Category not found", Toast.LENGTH_SHORT).show();
+        }
     }
 }

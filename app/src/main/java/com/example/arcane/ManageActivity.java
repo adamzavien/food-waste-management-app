@@ -103,7 +103,7 @@ public class ManageActivity extends AppCompatActivity {
                         Toast.makeText(ManageActivity.this, "food info found", Toast.LENGTH_SHORT).show();
                     }
                 }catch(Exception e){
-                    Toast.makeText(ManageActivity.this, "error found during food information search", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ManageActivity.this, "food information is not found", Toast.LENGTH_SHORT).show();
                 }
             }
         });
