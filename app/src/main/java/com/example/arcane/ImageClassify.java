@@ -183,11 +183,12 @@ public class ImageClassify extends AppCompatActivity {
             result.setText(classes[maxPos]);
 
             // Display confidence for all classes
-            String s = "";
+            /*String s = "";
             for(int i = 0; i < classes.length; i++){
                 s += String.format("%s: %.1f%%\n", classes[i], confidences[i] * 100);
             }
-            confidence.setText(s);
+            confidence.setText(s);*/
+            confidence.setText(classes[maxPos] + " : " + (maxConfidence * 100) + " %");
 
             String foodCategory = db.classifyFoodCategory(classes[maxPos]);
             // receive data from another activity

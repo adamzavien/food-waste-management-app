@@ -23,7 +23,7 @@ public class ViewFoodActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_food);
-        setTitle("View List of Food Waste");
+        setTitle("List of Food Waste Record");
 
         viewFoodActivity = findViewById(R.id.viewFoodActivity);
         btn_goDelete = findViewById(R.id.btn_goDelete);

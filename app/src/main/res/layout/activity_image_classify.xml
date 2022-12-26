@@ -88,7 +88,7 @@
         android:layout_below="@+id/txt_result"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30sp"
-        android:text="Confidences: "
+        android:text="Confidence Accuracy : "
         android:textSize="20sp"
         android:textStyle="bold" />
 

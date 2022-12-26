@@ -55,7 +55,7 @@ public class ManageFoodWasteActivity extends AppCompatActivity {
                 try{
                     // to ensure all the fields are not blank
                     if(foodCategory.equals("") || foodName.equals("") || foodDescription.equals(""))
-                        Toast.makeText(ManageFoodWasteActivity.this, "please fill all the information", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ManageFoodWasteActivity.this, "Please fill all the information", Toast.LENGTH_SHORT).show();
                     else{
 
                         db.addFood(foodCategory,foodName,foodDescription, key_value);
@@ -66,7 +66,7 @@ public class ManageFoodWasteActivity extends AppCompatActivity {
                         compostTech(foodCategory);
                     }
                 }catch(Exception e){
-                    Toast.makeText(ManageFoodWasteActivity.this, "error found during food information insertion", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ManageFoodWasteActivity.this, "Error found during food information insertion", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -88,7 +88,6 @@ public class ManageFoodWasteActivity extends AppCompatActivity {
             Intent aaa = new Intent(ManageFoodWasteActivity.this, CompostVermi.class);
             startActivity(aaa);
         }else{
-            Toast.makeText(this, "Category not found", Toast.LENGTH_SHORT).show();
             Intent aaa = new Intent(ManageFoodWasteActivity.this, Alternative.class);
             startActivity(aaa);
         }
