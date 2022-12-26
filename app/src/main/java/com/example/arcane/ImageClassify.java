@@ -18,9 +18,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.arcane.ml.Model;
+
+import com.example.arcane.ml.ModelUnquant;
 
 import org.tensorflow.lite.DataType;
+import org.tensorflow.lite.schema.Model;
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;
 
 import java.io.IOException;
@@ -136,7 +138,7 @@ public class ImageClassify extends AppCompatActivity {
 
     public void classifyImage(Bitmap image){
         try {
-            Model model = Model.newInstance(getApplicationContext());
+            ModelUnquant model = ModelUnquant.newInstance(getApplicationContext());
 
             //Create input for reference.
             TensorBuffer inputFeature0 = TensorBuffer.createFixedSize(new int[]{1, 224, 224, 3}, DataType.FLOAT32);
@@ -163,7 +165,7 @@ public class ImageClassify extends AppCompatActivity {
             inputFeature0.loadBuffer(byteBuffer);
 
             // Runs model inference and gets result.
-            Model.Outputs outputs = model.process(inputFeature0);
+            ModelUnquant.Outputs outputs = model.process(inputFeature0);
             TensorBuffer outputFeature0 = outputs.getOutputFeature0AsTensorBuffer();
 
             float[] confidences = outputFeature0.getFloatArray();
@@ -179,7 +181,7 @@ public class ImageClassify extends AppCompatActivity {
             }
 
             // Display the accurate class. Refer to teachable machine labels
-            String [] classes = {"Milk", "Apple", "Bread"};
+            String [] classes = {"Milk", "Apple", "Banana", "Cabbage", "Bread", "Rice"};
             result.setText(classes[maxPos]);
 
             // Display confidence for all classes
@@ -211,14 +213,13 @@ public class ImageClassify extends AppCompatActivity {
 
     // Generate food decompositon technique based on food category
     public void compostTech(String category){
-        if(category.toLowerCase().equals("fruit")){
+        if(category.toLowerCase().equals("fruits") || category.toLowerCase().equals("vegetables")){
             Intent aaa = new Intent(ImageClassify.this, CompostPit.class);
             startActivity(aaa);
         }else if(category.toLowerCase().equals("grains")){
             Intent aaa = new Intent(ImageClassify.this, CompostVermi.class);
             startActivity(aaa);
         }else{
-            Toast.makeText(this, "Category not found", Toast.LENGTH_SHORT).show();
             Intent aaa = new Intent(ImageClassify.this, Alternative.class);
             startActivity(aaa);
         }

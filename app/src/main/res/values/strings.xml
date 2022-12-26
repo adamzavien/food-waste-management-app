@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">Arcane</string>
     <string name="Pit_Compose">
-                1. Choose a place to dig. \n\n
-                2. Dig a hole 12 inches / 30 cm deep. \n\n
+                1. Choose a suitable soil place to dig a hole. \n\n
+                2. Dig a hole with 30 cm deep underground. \n\n
                 3. Dump in your food waste into the hole.\n\n
-                4. Cover the hole with at least 6 inches / 15 cm of soil. \n\n
-                5. Turn the compost once in a while. \n\n
+                4. Cover the hole with at least 15 cm of soil. \n\n
+                5. Turn the compost upside down once in a while. \n\n
                 6. Done ! \n\n
         </string>
     <string name="Vermi_Compose">

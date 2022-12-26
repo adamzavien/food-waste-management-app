@@ -125,10 +125,10 @@ public class DBHelper extends SQLiteOpenHelper {
         for(cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()){
             result +=
                     "Food ID\t: " + cursor.getString(indexfoodID) + "\n" +
-                            "Food Category \t: " + cursor.getString(indexfoodCategory) + "\n" +
-                            "Food Name : \t" + cursor.getString(indexfoodName) + "\n" +
-                            "Food Description \t: " + cursor.getString(indexfoodDescription) + "\n" +
-                            "User Name \t: " + cursor.getString(indexUserName) + "\n\n";
+                            "Food Category\t\t\t\t: " + cursor.getString(indexfoodCategory) + "\n" +
+                            "Food Name\t\t\t\t\t\t\t: " + cursor.getString(indexfoodName) + "\n" +
+                            "Food Description\t: " + cursor.getString(indexfoodDescription) + "\n\n";
+                            //"User Name \t: " + cursor.getString(indexUserName) + "\n\n";
         }
             db.close();
             return result;
@@ -211,11 +211,13 @@ public class DBHelper extends SQLiteOpenHelper {
 
         a = foodName.toLowerCase();
 
-        if(a.equals("apple"))
-            category = "fruit";
+        if(a.equals("apple") || a.equals("banana") || a.equals("cabbage"))
+            category = "fruits";
+        else if(a.equals("cabbage"))
+            category = "vegetables";
         else if(a.equals("milk"))
             category = "dairy";
-        else if(a.equals("bread"))
+        else if(a.equals("bread") || a.equals("rice"))
             category = "grains";
         else
             category = "food category unknown :(";

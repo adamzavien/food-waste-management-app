@@ -81,7 +81,7 @@ public class ManageFoodWasteActivity extends AppCompatActivity {
 
     // Generate food decompositon technique based on food category
     public void compostTech(String category){
-        if(category.toLowerCase().equals("fruit")){
+        if(category.toLowerCase().equals("fruits") || category.toLowerCase().equals("vegetables")){
             Intent aaa = new Intent(ManageFoodWasteActivity.this, CompostPit.class);
             startActivity(aaa);
         }else if(category.toLowerCase().equals("grains")){

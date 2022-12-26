@@ -35,6 +35,7 @@ public class ViewFoodActivity extends AppCompatActivity {
         String data = db.viewFoodList();
         viewFoodActivity.setText(data);
 
+
         // all the button below will go to the next activity
 
         btn_goDelete.setOnClickListener(new View.OnClickListener() {
