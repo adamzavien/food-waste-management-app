@@ -15,6 +15,13 @@
         android:theme="@style/Theme.Arcane"
         tools:targetApi="31">
         <activity
+            android:name=".Alternative"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ImageClassify"
             android:exported="false">
             <meta-data

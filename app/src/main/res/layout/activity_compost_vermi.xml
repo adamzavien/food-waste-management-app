@@ -33,6 +33,7 @@
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:text="Step-by-Step Vermi Composting"
+                android:textSize="22dp"
                 android:textAppearance="@android:style/TextAppearance.DeviceDefault" />
 
             <TextView
@@ -42,6 +43,7 @@
                 android:autoLink="web"
                 android:lineSpacingExtra="5sp"
                 android:padding="10dp"
+                android:textSize="20dp"
                 android:text="@string/Vermi_Compose" />
 
         </LinearLayout>

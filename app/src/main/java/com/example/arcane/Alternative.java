@@ -1,0 +1,39 @@
+package com.example.arcane;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+public class Alternative extends AppCompatActivity {
+
+    TextView alternativeText;
+    Button dispose, share;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_alternative);
+        setTitle("Alternative");
+
+        alternativeText = findViewById(R.id.txt_alternativeDescription);
+        dispose = findViewById(R.id.btn_dispose);
+        share = findViewById(R.id.btn_share);
+
+        dispose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alternativeText.setText(R.string.alternativeTextDispose);
+            }
+        });
+
+        share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alternativeText.setText(R.string.alternativeTextShare);
+            }
+        });
+    }
+}

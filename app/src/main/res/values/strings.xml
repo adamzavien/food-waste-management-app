@@ -18,5 +18,22 @@
                 7. After a few months, sieve the harvested vermicast to separate the earthworms with undecomposed materials. \n\n
                 8. Done !\n\n
         </string>
+    <string name="alternativeText">
+        \nUnfortunately, this food category is not suitable for food decomposition technique.\n
+        \nYou can dispose the food waste properly or send it to food facility.\n
+        \nFood facility will share the food to other people if the food quality is in appropriate condition.\n
+
+    </string>
+
+    <string name="alternativeTextDispose">
+        \nYou have chosen to dispose your food waste.\n
+
+        \nMake sure to disposed your food waste responsibly in a garbage bin for collection by your commercial waste service for disposal in landfill.\n
+    </string>
+
+    <string name="alternativeTextShare">
+        \nShared successfully !\n\n
+        \nYour food waste will be pick up by commercial food waste service and will be send to food facility.\n
+    </string>
 
 </resources>

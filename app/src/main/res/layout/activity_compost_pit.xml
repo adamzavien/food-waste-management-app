@@ -33,6 +33,7 @@
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:text="Step-by-Step Pit Composting"
+                android:textSize="22dp"
                 android:textAppearance="@android:style/TextAppearance.DeviceDefault" />
 
             <TextView
@@ -42,7 +43,8 @@
                 android:autoLink="web"
                 android:lineSpacingExtra="5sp"
                 android:padding="10dp"
-                android:text="@string/Pit_Compose" />
+                android:text="@string/Pit_Compose"
+                android:textSize="20dp"/>
 
         </LinearLayout>
 

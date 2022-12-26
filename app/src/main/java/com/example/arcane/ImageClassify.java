@@ -218,6 +218,8 @@ public class ImageClassify extends AppCompatActivity {
             startActivity(aaa);
         }else{
             Toast.makeText(this, "Category not found", Toast.LENGTH_SHORT).show();
+            Intent aaa = new Intent(ImageClassify.this, Alternative.class);
+            startActivity(aaa);
         }
     }
 

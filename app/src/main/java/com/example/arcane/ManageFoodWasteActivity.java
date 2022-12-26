@@ -89,6 +89,8 @@ public class ManageFoodWasteActivity extends AppCompatActivity {
             startActivity(aaa);
         }else{
             Toast.makeText(this, "Category not found", Toast.LENGTH_SHORT).show();
+            Intent aaa = new Intent(ManageFoodWasteActivity.this, Alternative.class);
+            startActivity(aaa);
         }
     }
 }
