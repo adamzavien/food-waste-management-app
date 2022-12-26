@@ -1,6 +1,6 @@
 <resources>
-        <string name="app_name">Arcane</string>
-        <string name="Pit_Compose">
+    <string name="app_name">Arcane</string>
+    <string name="Pit_Compose">
                 1. Choose a place to dig. \n\n
                 2. Dig a hole 12 inches / 30 cm deep. \n\n
                 3. Dump in your food waste into the hole.\n\n
@@ -8,7 +8,7 @@
                 5. Turn the compost once in a while. \n\n
                 6. Done ! \n\n
         </string>
-        <string name="Vermi_Compose">
+    <string name="Vermi_Compose">
                 1. Provide an organic waste materials such as vermiworm. \n\n
                 2. Prepare a vermi compost bed measuring one meter wide and five meters in length. \n\n
                 3. Add the organic waste materials into the compost bed.\n\n

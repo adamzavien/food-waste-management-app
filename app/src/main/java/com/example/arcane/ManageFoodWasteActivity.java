@@ -12,7 +12,7 @@ import android.widget.Toast;
 public class ManageFoodWasteActivity extends AppCompatActivity {
 
     EditText et_foodCategory, et_foodName, et_FoodDescription;
-    Button btn_composeFoodWaste;
+    Button btn_composeFoodWaste, btn_goToImageClassify;
     String foodCategory, foodName, foodDescription, key_value;
     DBHelper db;
 
@@ -27,8 +27,21 @@ public class ManageFoodWasteActivity extends AppCompatActivity {
         et_foodName             = findViewById(R.id.et_foodName);
         et_FoodDescription      = findViewById(R.id.et_foodDescription);
         btn_composeFoodWaste    = findViewById(R.id.btn_composeFoodWaste);
+        btn_goToImageClassify   = findViewById(R.id.btn_goToImageClassify);
 
         db = new DBHelper(this);
+
+        // receive data from another activity : homepage activity
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            key_value = extras.getString("key");
+            //The key argument here must match that used in the other activity
+        }
+        // pass data between activities
+        String value = key_value; // this key value represent username
+        Intent i = new Intent(ManageFoodWasteActivity.this, ImageClassify.class);
+        i.putExtra("key",value);
+
 
         btn_composeFoodWaste.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,15 +57,7 @@ public class ManageFoodWasteActivity extends AppCompatActivity {
                     if(foodCategory.equals("") || foodName.equals("") || foodDescription.equals(""))
                         Toast.makeText(ManageFoodWasteActivity.this, "please fill all the information", Toast.LENGTH_SHORT).show();
                     else{
-                        // session id
-                        {
-                            // receive data from another activity
-                            Bundle extras = getIntent().getExtras();
-                            if (extras != null) {
-                                key_value = extras.getString("key");
-                                //The key argument here must match that used in the other activity
-                            }
-                        }
+
                         db.addFood(foodCategory,foodName,foodDescription, key_value);
 
                         //Intent intent = new Intent(ManageFoodWasteActivity.this, CompostPit.class);
@@ -65,10 +70,16 @@ public class ManageFoodWasteActivity extends AppCompatActivity {
                 }
             }
         });
+
+        btn_goToImageClassify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(i);
+            }
+        });
     }
 
-    // compostTech
-
+    // Generate food decompositon technique based on food category
     public void compostTech(String category){
         if(category.toLowerCase().equals("fruit")){
             Intent aaa = new Intent(ManageFoodWasteActivity.this, CompostPit.class);

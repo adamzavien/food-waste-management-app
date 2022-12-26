@@ -2,6 +2,7 @@ package com.example.arcane;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -202,5 +203,23 @@ public class DBHelper extends SQLiteOpenHelper {
         }
         Toast.makeText(context, "food description not found", Toast.LENGTH_SHORT).show();
         return null;
+    }
+
+    // Determine food category for image classification
+    public String classifyFoodCategory(String foodName){
+        String category = null, a;
+
+        a = foodName.toLowerCase();
+
+        if(a.equals("apple"))
+            category = "fruit";
+        else if(a.equals("milk"))
+            category = "dairy";
+        else if(a.equals("bread"))
+            category = "grains";
+        else
+            category = "food category unknown :(";
+
+        return category;
     }
 }
