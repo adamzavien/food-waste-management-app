@@ -14,6 +14,8 @@ public class HomepageActivity extends AppCompatActivity {
     Button btn_manageFoodWaste, btn_viewActivity;
     DBHelper db;
     String key_value;
+    int xp = 0;
+    TextView currentXP, goalXP;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +26,13 @@ public class HomepageActivity extends AppCompatActivity {
         txt_greetUser       = findViewById(R.id.txt_greetUser);
         btn_manageFoodWaste = findViewById(R.id.btn_manageFoodWaste);
         btn_viewActivity    = findViewById(R.id.btn_viewActivity);
+        currentXP           = findViewById(R.id.txt_currentXP);
+        goalXP              = findViewById(R.id.txt_goalXP);
+
 
         db = new DBHelper(this);
+
+        goalXP.setText(db.highestXP());
 
         //session id
         // receive data from another activity : login activity
@@ -44,6 +51,12 @@ public class HomepageActivity extends AppCompatActivity {
         btn_manageFoodWaste.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                xp = xp + 3;
+                db.insertXP(key_value, xp);
+                currentXP.setText("Your Point : " + xp + " XP");
+                goalXP.setText(db.highestXP());
+
                 startActivity(i);
             }
         });
@@ -55,5 +68,6 @@ public class HomepageActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 }

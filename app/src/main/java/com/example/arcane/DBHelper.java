@@ -31,6 +31,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
     Context context;
 
+    int placement = 0;
+
     public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
         this.context = context;
@@ -57,12 +59,66 @@ public class DBHelper extends SQLiteOpenHelper {
                 ");";
 
         db.execSQL(createTable3);
+
+        // Leaderboard Table
+        String createLeaderboardTable = "CREATE TABLE " + "LEADERBOARD_TABLE" + "(\n" +
+                "LEADERBOARD_ID" + "  INTEGER PRIMARY KEY AUTOINCREMENT, \n" +
+                "POINT" + "  NUMBER, \n" +
+                FK_USER_NAME + "  TEXT, \n" +
+                "  FOREIGN KEY(USER_NAME) REFERENCES USER(USER_NAME)\n" +
+                ");";
+
+        db.execSQL(createLeaderboardTable);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(" drop table if exists " + USER_TABLE);
         db.execSQL(" drop table if exists " + FOOD_TABLE);
+        db.execSQL(" drop table if exists " + "LEADERBOARD_TABLE");
+    }
+
+    // Insert point into leaderboard table
+    public void insertXP(String username, int point){
+        db = this.getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+
+        cv.put("USER_NAME", username);
+        cv.put("POINT", point);
+
+        db.insert("LEADERBOARD_TABLE", null, cv);
+    }
+
+    // View leaderboard
+    public String highestXP(){
+        db = this.getReadableDatabase();
+
+        String[] columns = new String[]{"LEADERBOARD_ID", "POINT", FK_USER_NAME};
+
+        Cursor cursor = db.query("LEADERBOARD_TABLE", columns, null, null, null, null, "POINT");
+
+        int id, point, username;
+
+        id = cursor.getColumnIndex("LEADERBOARD_ID");
+        point = cursor.getColumnIndex("POINT");
+        username = cursor.getColumnIndex(FK_USER_NAME);
+
+        String result = "";
+
+        int maxScore = 0, second = 0;
+        String maxPeople = "";
+
+        for(cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()){
+
+            if(maxScore < Integer.parseInt(cursor.getString(point))) {
+                maxScore = Integer.parseInt(cursor.getString(point));
+                result = "Current Highest Point : " + maxScore + " XP \n";
+            }
+
+        }
+        db.close();
+        return result;
     }
 
     // add new user into the user table
