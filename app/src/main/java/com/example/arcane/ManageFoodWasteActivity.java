@@ -1,8 +1,10 @@
 package com.example.arcane;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,6 +23,15 @@ public class ManageFoodWasteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manage_food_waste);
         setTitle("Manage Food Waste");
+
+        // grab constraint layout and store it into the variable
+        ConstraintLayout constraintLayout = findViewById(R.id.manageFoodWasteLayout);
+
+        // create animation drawable object
+        AnimationDrawable animationDrawable = (AnimationDrawable) constraintLayout.getBackground();
+        animationDrawable.setEnterFadeDuration(2500);
+        animationDrawable.setExitFadeDuration(5000);
+        animationDrawable.start();
 
         // initialize
         et_foodCategory         = findViewById(R.id.et_foodCategory);

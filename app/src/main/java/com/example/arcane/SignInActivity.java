@@ -1,8 +1,10 @@
 package com.example.arcane;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -20,6 +22,15 @@ public class SignInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
         setTitle("Sign In");
+
+        // grab constraint layout and store it into the variable
+        ConstraintLayout constraintLayout = findViewById(R.id.signInLayout);
+
+        // create animation drawable object
+        AnimationDrawable animationDrawable = (AnimationDrawable) constraintLayout.getBackground();
+        animationDrawable.setEnterFadeDuration(2500);
+        animationDrawable.setExitFadeDuration(5000);
+        animationDrawable.start();
 
         et_username = findViewById(R.id.et_logUsername);
         et_password = findViewById(R.id.et_logPassword);

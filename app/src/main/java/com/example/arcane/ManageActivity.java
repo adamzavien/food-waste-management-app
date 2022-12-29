@@ -1,12 +1,15 @@
 package com.example.arcane;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 public class ManageActivity extends AppCompatActivity {
@@ -34,6 +37,15 @@ public class ManageActivity extends AppCompatActivity {
         btn_delete = findViewById(R.id.button_delete);
         btn_update = findViewById(R.id.button_update);
         btn_search = findViewById(R.id.button_search);
+
+        // grab constraint layout and store it into the variable
+        LinearLayout constraintLayout = findViewById(R.id.manageActivityLayout);
+
+        // create animation drawable object
+        AnimationDrawable animationDrawable = (AnimationDrawable) constraintLayout.getBackground();
+        animationDrawable.setEnterFadeDuration(2500);
+        animationDrawable.setExitFadeDuration(5000);
+        animationDrawable.start();
 
         btn_delete.setOnClickListener(new View.OnClickListener() {
             @Override

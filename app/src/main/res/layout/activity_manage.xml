@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ManageActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/gradient_list"
+    android:id="@+id/manageActivityLayout">
 
     <EditText
         android:id="@+id/edit_foodID"

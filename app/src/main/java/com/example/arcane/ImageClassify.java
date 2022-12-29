@@ -2,11 +2,13 @@ package com.example.arcane;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.drawable.AnimationDrawable;
 import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.Build;
@@ -15,6 +17,7 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,6 +47,15 @@ public class ImageClassify extends AppCompatActivity {
         setContentView(R.layout.activity_image_classify);
 
         setTitle("Classify Food Waste");
+
+        // grab constraint layout and store it into the variable
+        RelativeLayout constraintLayout = findViewById(R.id.imageClassifyLayout);
+
+        // create animation drawable object
+        AnimationDrawable animationDrawable = (AnimationDrawable) constraintLayout.getBackground();
+        animationDrawable.setEnterFadeDuration(2500);
+        animationDrawable.setExitFadeDuration(5000);
+        animationDrawable.start();
 
         result      = findViewById(R.id.txt_result);
         confidence  = findViewById(R.id.txt_confidence);
