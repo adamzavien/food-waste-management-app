@@ -5,9 +5,11 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,6 +22,14 @@ public class MainActivity extends AppCompatActivity {
 
         btn_signUp = findViewById(R.id.btn_signUp);
         btn_signIn = findViewById(R.id.btn_signIn);
+
+        // image
+        ImageView imageView;
+        Drawable drawable;
+
+        imageView = findViewById(R.id.imageView2);
+        drawable = getResources().getDrawable(R.drawable.logo2);
+        imageView.setImageDrawable(drawable);
 
         // grab constraint layout and store it into the variable
         ConstraintLayout constraintLayout = findViewById(R.id.mainLayout);
