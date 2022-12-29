@@ -53,7 +53,9 @@
             android:textSize="18sp"
             android:layout_weight="1"
             android:layout_margin="20dp"
-            android:visibility="gone"/>
+            android:visibility="gone"
+            android:backgroundTint="@color/yeet"
+            style="?android:attr/buttonBarButtonStyle" />
         <Button
             android:id="@+id/button_view"
             android:layout_width="wrap_content"
@@ -62,7 +64,8 @@
             android:textSize="18sp"
             android:layout_weight="1"
             android:layout_margin="20dp"
-            android:visibility="gone"/>
+            android:visibility="gone"
+            android:backgroundTint="@color/yeet"/>
 
     </LinearLayout>
 
@@ -77,7 +80,8 @@
             android:text="delete"
             android:textSize="18sp"
             android:layout_weight="1"
-            android:layout_margin="20dp"/>
+            android:layout_margin="20dp"
+            android:backgroundTint="@color/yeet"/>
         <Button
             android:id="@+id/button_update"
             android:layout_width="wrap_content"
@@ -85,7 +89,8 @@
             android:text="update"
             android:textSize="18sp"
             android:layout_weight="1"
-            android:layout_margin="20dp"/>
+            android:layout_margin="20dp"
+            android:backgroundTint="@color/yeet"/>
     </LinearLayout>
 
     <Button
@@ -94,6 +99,7 @@
         android:layout_height="wrap_content"
         android:text="search"
         android:textSize="18sp"
-        android:layout_margin="20dp"/>
+        android:layout_margin="20dp"
+        android:backgroundTint="@color/yeet"/>
 
 </LinearLayout>

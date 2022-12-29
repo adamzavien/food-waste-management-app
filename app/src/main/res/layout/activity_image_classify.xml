@@ -20,7 +20,8 @@
         android:text="Take Picture"
         android:textAllCaps="false"
         android:textSize="21sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:backgroundTint="@color/yeet"/>
 
     <Button
         android:id="@+id/btn_openGallery"
@@ -35,7 +36,8 @@
         android:text="Open Gallery"
         android:textAllCaps="false"
         android:textSize="21sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:backgroundTint="@color/yeet"/>
 
     <Button
         android:id="@+id/btn_composeFoodWaste2"
@@ -50,7 +52,8 @@
         android:text="Compose Food Waste"
         android:textAllCaps="false"
         android:textSize="21sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:backgroundTint="@color/yeet"/>
 
     <ImageView
         android:id="@+id/iv_foodImage"
