@@ -1,6 +1,6 @@
 # Food Waste Management App with Image Classification Prototype
 
-* To help user to manage their food waste based on food categories.
+* To help user manage their extra food waste based on food categories.
 * Utilizes image classification technology to help users identify and track their food waste detail activity.
 * Guide users on how to decompose the food waste based on food decomposition techniques.
 
