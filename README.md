@@ -9,7 +9,5 @@
 * Integrated Development Environment (IDE): Android Studio
 * Machine learning framework: Tensorflow Lite
 
-![image](https://github.com/adamzavien/food-waste-management-app/assets/74973987/0c79a3f7-579b-4c5a-98c9-2081a884c5fa)
-
 ![image](https://github.com/adamzavien/food-waste-management-app/assets/74973987/844c137b-d7bd-40d1-9fcb-da947457796b)
 
